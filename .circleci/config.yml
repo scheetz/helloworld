@@ -10,7 +10,7 @@ jobs:
     - image: alpine:latest
     steps:
     - run:
-      command: env
+        command: env
   ctrz:
     executor: docker-publish/docker
     environment:
