@@ -10,6 +10,7 @@ jobs:
           aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: "Containerize"
           command: "containerize.sh"
