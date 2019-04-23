@@ -11,4 +11,4 @@ workflows:
       - aws-ecr/build_and_push_image:
           context: ecr
           create-repo: true
-          repo: $CIRCLE_PROJECT_REPONAME
+          repo: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
