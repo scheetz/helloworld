@@ -19,3 +19,4 @@ workflows:
       - env
       - ctrz/publish:
           deploy: false
+          extra_build_args: --build-arg DOCKER_LOGIN=scheetz
