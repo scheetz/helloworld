@@ -1,14 +1,22 @@
 # CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
 version: 2.1
 
-orbs:
-  aws-ecr: circleci/aws-ecr@4.0.1
+jobs:
+  ctrz:
+    docker:
+      - image: 081522272738.dkr.ecr.us-west-1.amazonaws.com/michael-scheetz/containerize:latest
+        aws_auth:
+          aws_access_key_id: $AWS_ACCESS_KEY_ID
+          aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
+    steps:
+      - checkout
+      - run:
+          name: "Containerize"
+          command: "containerize.sh"
 
 workflows:
   version: 2
   build_docker_image:
     jobs:
-      - aws-ecr/build_and_push_image:
+      - ctrz:
           context: ecr
-          create-repo: true
-          repo: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
