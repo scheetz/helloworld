@@ -15,6 +15,7 @@ jobs:
     executor: docker-publish/docker
     environment:
       DOCKER_LOGIN: scheetz
+      DOCKER_PASSWORD: none
     steps:
     - checkout
     - setup_remote_docker
