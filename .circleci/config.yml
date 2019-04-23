@@ -2,7 +2,7 @@
 version: 2.1
 
 orbs:
-  ctrz: circleci/docker-publish@0.1.6
+  docker-publish: circleci/docker-publish@0.1.6
 
 jobs:
   env:
@@ -10,13 +10,20 @@ jobs:
     - image: alpine:latest
     steps:
     - run:
-        command: env
+      command: env
+  ctrz:
+    executor: docker-publish/docker
+    environment:
+      DOCKER_LOGIN: scheetz
+    steps:
+    - checkout
+    - setup_remote_docker
+    - docker-publish/check
+    - docker-publish/build
 
 workflows:
   version: 2
   build_docker_image:
     jobs:
       - env
-      - ctrz/publish:
-          deploy: false
-          extra_build_args: --build-arg DOCKER_LOGIN=scheetz
+      - ctrz
