@@ -2,29 +2,13 @@
 version: 2.1
 
 orbs:
-  docker-publish: circleci/docker-publish@0.1.6
-
-jobs:
-  env:
-    docker:
-    - image: alpine:latest
-    steps:
-    - run:
-        command: env
-  ctrz:
-    executor: docker-publish/docker
-    environment:
-      DOCKER_LOGIN: scheetz
-      DOCKER_PASSWORD: none
-    steps:
-    - checkout
-    - setup_remote_docker
-    - docker-publish/check
-    - docker-publish/build
+  aws-ecr: circleci/aws-ecr@4.0.1
 
 workflows:
   version: 2
   build_docker_image:
     jobs:
-      - env
-      - ctrz
+      - aws-ecr/build_and_push_image:
+          context: ecr
+          create-repo: true
+          repo: ${CIRCLE_REPOSTIORY_URL}
