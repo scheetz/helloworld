@@ -13,7 +13,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: "Containerize"
-          command: "containerize.sh"
+          command: "containerize.sh -p"
 
 workflows:
   version: 2
