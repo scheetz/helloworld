@@ -13,7 +13,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Containerize Info
-          command: echo $CTRZ_GIT_SHA
+          command: "echo $CTRZ_GIT_SHA"
       - run:
           name: Containerize
           command: containerize.sh -p
