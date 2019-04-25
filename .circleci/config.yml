@@ -4,13 +4,16 @@ version: 2.1
 jobs:
   ctrz:
     docker:
-      - image: 081522272738.dkr.ecr.us-west-2.amazonaws.com/michael-scheetz/containerize:latest
+      - image: 081522272738.dkr.ecr.us-west-2.amazonaws.com/michael-scheetz/containerize:ecr-policy
         aws_auth:
           aws_access_key_id: $AWS_ACCESS_KEY_ID
           aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
     steps:
       - checkout
       - setup_remote_docker
+      - run:
+          name: "Containerize Info"
+          command: "env | grep ^CTRZ"
       - run:
           name: "Containerize"
           command: "containerize.sh -p"
