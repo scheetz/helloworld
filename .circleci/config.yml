@@ -13,7 +13,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: "Containerize Info"
-          command: "env | grep ^CTRZ"
+          command: "env | grep '^CTRZ'"
       - run:
           name: "Containerize"
           command: "containerize.sh -p"
