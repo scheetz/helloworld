@@ -12,10 +12,11 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: "Containerize Info"
-          command: "env | grep '^CTRZ'"
+          name: Containerize Info
+          command: |
+            env | grep '^CTRZ'
       - run:
-          name: "Containerize"
+          name: Containerize
           command: "containerize.sh -p"
 
 workflows:
