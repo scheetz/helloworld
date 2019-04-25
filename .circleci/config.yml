@@ -21,3 +21,6 @@ workflows:
     jobs:
       - ctrz:
           context: ecr
+          filters:
+            tags:
+              only: /.*/
