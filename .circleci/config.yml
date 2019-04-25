@@ -13,11 +13,10 @@ jobs:
       - setup_remote_docker
       - run:
           name: Containerize Info
-          command: |
-            env | grep CTRZ
+          command: echo $CTRZ_GIT_SHA
       - run:
           name: Containerize
-          command: "containerize.sh -p"
+          command: containerize.sh -p
 
 workflows:
   version: 2
