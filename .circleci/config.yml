@@ -16,7 +16,7 @@ jobs:
           command: "echo $CTRZ_GIT_SHA"
       - run:
           name: Containerize
-          command: containerize.sh -p
+          command: "containerize.sh -p"
 
 workflows:
   version: 2
