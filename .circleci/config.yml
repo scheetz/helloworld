@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Containerize Info
           command: |
-            env | grep 'CTRZ'
+            env | grep CTRZ
       - run:
           name: Containerize
           command: "containerize.sh -p"
